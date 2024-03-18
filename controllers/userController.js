@@ -12,8 +12,9 @@ const userController = {
         return res.status(404).json({ message: 'No users' });
       }
       res.json(users);
-    } catch (error) {
-      res.status(500).json(error);
+    } catch (err) {
+      logError(err);
+      res.status(500).json(err);
     }
   }
 }
