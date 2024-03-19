@@ -16,7 +16,8 @@ const userController = {
       logError(err);
       res.status(500).json(err);
     }
-  },  
+  },
+
   async getUserById(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId })
@@ -34,6 +35,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
+
   async createUser(req, res) {
     try {
       const user = await User.create(req.body);
@@ -42,6 +44,7 @@ const userController = {
       res.status(400).json(error);
     }
   },
+
   async updateUser(req, res) {
     try {
         // WedDevSimp says use    User.findById().save()
@@ -58,6 +61,7 @@ const userController = {
       res.status(400).json(error);
     }
   },
+
   async deleteUser(req, res) {
     try {
       const user = await User.findOneAndDelete({ _id: req.params.userId });
@@ -75,8 +79,38 @@ const userController = {
     }
   },
 
+  async addFriend(req, res) {
+    try {
+      const user = await User.findByIdAndUpdate(
+        { _id: req.params.userId },
+        { $addToSet: { friends: req.params.friendId } },
+        { new: true }
+      );
+      if (!user) {
+        return res.status(404).json({ message: 'No such user' });
+      }
+      res.json(user);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  },
+  
+  async removeFriend(req, res) {
+    try {
+      const user = await User.findByIdAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId } },
+        { new: true }
+      );
+      if (!user) {
+        return res.status(404).json({ message: 'No such user' });
+      }
+      res.json(user);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  }
 }
-
 
 
 module.exports = userController;
