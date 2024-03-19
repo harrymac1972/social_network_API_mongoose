@@ -64,6 +64,26 @@ const thoughtController = {
     }
   },
 
+  async deleteThought(req, res) {
+    try {
+      const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
+      if (!thought) {
+        return res.status(404).json({ message: 'No thought exists with that ID' });
+      }
+      const user = await User.findOneAndUpdate(
+        { thoughts: req.params.thoughtId },
+        { $pull: { thoughts: req.params.thoughtId } },
+        { new: true }
+      );
+      if (!user) {
+        return res.status(404).json({ message: 'Thought deleted, but no user with that thought ID' });
+      }
+      res.json({ message: 'Thought deleted' });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
 }
 
 
