@@ -6,16 +6,16 @@ const thoughtController = {
   
   async getAllThoughts(req, res) {
     try {
-      const thoughts = await Thought.find();
-      if (thoughts.length === 0) {
-        return res.status(404).json({ message: 'No thoughts...' });
+      const thoughtsArr = await Thought.find();
+      if (thoughtsArr.length < 1) {
+        return res.status(404).json({ message: 'No Thoughts...' });
       }
-      res.json(thoughts);
+      res.json(thoughtsArr);
     } catch (err) {
       res.status(500).json(err);
     }
   },
-  
+
   async getThoughtById(req, res) {
     try {
       const thought = await Thought.findOne({ _id: req.params.thoughtId });
