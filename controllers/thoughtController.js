@@ -105,7 +105,23 @@ const thoughtController = {
     }
   },
 
-}
+  async removeReaction(req, res) {
+    try {
+      const thought = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $pull: { reactions: { reactionId: req.params.reactionId } } },
+        { runValidators: true, new: true }
+      );
+      if (!thought) {
+        return res.status(404).json({ message: 'No thought exists with that ID' });
+      }
+      res.json(thought);
+    } catch (err) {
+        logError(err);
+        res.status(500).json(err);
+    }
+  }
+};
 
 
 module.exports = thoughtController;
