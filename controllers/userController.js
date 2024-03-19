@@ -37,9 +37,9 @@ const userController = {
     try {
       const user = await User.create(req.body);
       res.status(201).json(user);
-    } catch (error) {
+    } catch (err) {
         logError(err);
-      res.status(400).json(error);
+      res.status(400).json(err);
     }
   },
 
@@ -55,9 +55,9 @@ const userController = {
         return res.status(404).json({ message: 'No such user' });
       }
       res.json(user);
-    } catch (error) {
+    } catch (err) {
         logError(err);
-      res.status(400).json(error);
+      res.status(400).json(err);
     }
   },
 
@@ -73,9 +73,9 @@ const userController = {
       );
       await Thought.deleteMany({ _id: { $in: user.thoughts } });
       res.json({ message: 'User deleted' });
-    } catch (error) {
+    } catch (err) {
         logError(err);
-      res.status(400).json(error);
+      res.status(400).json(err);
     }
   },
 
@@ -90,9 +90,9 @@ const userController = {
         return res.status(404).json({ message: 'No such user' });
       }
       res.json(user);
-    } catch (error) {
+    } catch (err) {
         logError(err);
-      res.status(400).json(error);
+      res.status(400).json(err);
     }
   },
 
@@ -107,9 +107,9 @@ const userController = {
         return res.status(404).json({ message: 'No such user' });
       }
       res.json(user);
-    } catch (error) {
+    } catch (err) {
         logError(err);
-      res.status(400).json(error);
+      res.status(400).json(err);
     }
   }
 }
