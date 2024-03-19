@@ -1,6 +1,6 @@
 
 
-const { Thought } = require('../models');
+const { Thought, User } = require('../models');
 
 const thoughtController = {
   
@@ -41,6 +41,23 @@ const thoughtController = {
         { new: true }
       );
       res.status(201).json(thought);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
+  },
+
+  async updateThought(req, res) {
+    try {
+      const thought = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $set: req.body },
+        { runValidators: true, new: true }
+      );
+      if (!thought) {
+        return res.status(404).json({ message: 'No thought exists with that ID' });
+      }
+      res.json(thought);
     } catch (err) {
       console.error(err);
       res.status(500).json(err);
