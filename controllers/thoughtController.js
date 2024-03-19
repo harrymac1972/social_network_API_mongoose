@@ -28,6 +28,25 @@ const thoughtController = {
     }
   },
 
+  async createThought(req, res) {
+    try {
+      const user = await User.findOne({ _id: req.body.userId });
+      if (!user) {
+        return res.status(400).json({ message: 'Invalid User Id' });
+      }
+      const thought = await Thought.create(req.body);
+      await User.findOneAndUpdate(
+        { _id: req.body.userId },
+        { $addToSet: { thoughts: thought._id } },
+        { new: true }
+      );
+      res.status(201).json(thought);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
+  },
+
 }
 
 
