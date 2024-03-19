@@ -15,6 +15,19 @@ const thoughtController = {
       res.status(500).json(err);
     }
   },
+  
+  async getThoughtById(req, res) {
+    try {
+      const thought = await Thought.findOne({ _id: req.params.thoughtId });
+      if (!thought) {
+        return res.status(404).json({ message: 'No thought exists with that ID' });
+      }
+      res.json(thought);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
 }
 
 
