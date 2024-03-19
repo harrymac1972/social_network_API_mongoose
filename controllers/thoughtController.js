@@ -1,6 +1,7 @@
 
 
 const { Thought, User } = require('../models');
+const logError = require ('../utils/errorLogger');
 
 const thoughtController = {
   
@@ -12,7 +13,8 @@ const thoughtController = {
       }
       res.json(thoughtsArr);
     } catch (err) {
-      res.status(500).json(err);
+        logError(err);
+        res.status(500).json(err);
     }
   },
 
@@ -24,7 +26,8 @@ const thoughtController = {
       }
       res.json(thought);
     } catch (err) {
-      res.status(500).json(err);
+        logError(err);
+        res.status(500).json(err);
     }
   },
 
@@ -42,8 +45,8 @@ const thoughtController = {
       );
       res.status(201).json(thought);
     } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
+        logError(err);
+        res.status(500).json(err);
     }
   },
 
@@ -59,8 +62,8 @@ const thoughtController = {
       }
       res.json(thought);
     } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
+        logError(err);
+        res.status(500).json(err);
     }
   },
 
@@ -80,7 +83,8 @@ const thoughtController = {
       }
       res.json({ message: 'Thought deleted' });
     } catch (err) {
-      res.status(500).json(err);
+        logError(err);
+        res.status(500).json(err);
     }
   },
 
@@ -96,8 +100,8 @@ const thoughtController = {
       }
       res.json(thought);
     } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
+        logError(err);
+        res.status(500).json(err);
     }
   },
 
