@@ -28,10 +28,7 @@ const userController = {
       }
       res.json(user);
     } catch (err) {
-      logError(err)
-      // console.log(error);
-      // console.log("\n========\n");
-      // console.log(error.message);
+      logError(err);
       res.status(500).json(err);
     }
   },
@@ -41,6 +38,7 @@ const userController = {
       const user = await User.create(req.body);
       res.status(201).json(user);
     } catch (error) {
+        logError(err);
       res.status(400).json(error);
     }
   },
@@ -58,6 +56,7 @@ const userController = {
       }
       res.json(user);
     } catch (error) {
+        logError(err);
       res.status(400).json(error);
     }
   },
@@ -75,6 +74,7 @@ const userController = {
       await Thought.deleteMany({ _id: { $in: user.thoughts } });
       res.json({ message: 'User deleted' });
     } catch (error) {
+        logError(err);
       res.status(400).json(error);
     }
   },
@@ -91,10 +91,11 @@ const userController = {
       }
       res.json(user);
     } catch (error) {
+        logError(err);
       res.status(400).json(error);
     }
   },
-  
+
   async removeFriend(req, res) {
     try {
       const user = await User.findByIdAndUpdate(
@@ -107,6 +108,7 @@ const userController = {
       }
       res.json(user);
     } catch (error) {
+        logError(err);
       res.status(400).json(error);
     }
   }
