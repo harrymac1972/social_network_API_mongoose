@@ -55,7 +55,7 @@ If you have any questions, please contact:
 ![Screenshot_1](./imgs/info/get_api_users_test.png)
 
 ## Demonstration Video
-n/a
+<a href="https://drive.google.com/file/d/1KCmuKKYqAjt_ykB6BZy6TcAgEULKJnzC/view">Video Walkthrough</a>
 
 ## GitHub Link
 <a href="https://github.com/harrymac1972/social_network_API_mongoose">Social Network API Mongoose on Github</a>
