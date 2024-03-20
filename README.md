@@ -4,7 +4,7 @@
 
 ## Description
 
-_
+This Express application is powered by the NoSQL database MongoDB. This platform enables users to share their thoughts, react to others' posts, and connect with friends seamlessly. You can effortlessly manage user accounts, post updates, interact with friends, and express reactions to various thoughts.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -18,6 +18,7 @@ _
 - [GitHub Link](#github-link)
 
 ## Features
+
 CRUD operations for user and thought management.<br>
 Ability to add and remove friends.<br>
 Capability to post reactions to thoughts.<br>
