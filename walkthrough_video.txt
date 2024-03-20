@@ -1,0 +1,142 @@
+Video Checklist
+---------------
+delete DB in Studio3T
+npm run seed
+confirm DB in Studio3T
+npm run start
+
+GET	/users
+
+GET	/users/<batman_id>
+
+POST	/users
+{
+"username": "wonderwoman",
+"email": "wonder@wonder.com"
+}
+
+GET	/users	<--- to prove it
+
+PUT	/users/<batman_id>
+{
+"email": "batman@batman.ca"
+}
+
+GET	/users	<--- to prove it
+
+GET	/thoughts
+
+GET	/thoughts/<do_not_make_me_angry_id>
+
+POST	/thoughts
+{
+"userId": "<hulk_id>",
+"username": "hulk",
+"thoughtText": "you won't like it when I'm angry"
+}
+
+PUT	/thoughts/<you_won't_like..._id>
+{
+"userId": "<hulk_id>",
+"username": "hulk",
+"thoughtText": "me Hulk smash!"
+}
+
+DELETE	/thoughts/<me_hulk_smash_id>
+
+GET	/thoughts	<--- to prove it
+
+POST	/users/<batman_id>/friends/<hulk_id>
+
+GET	/users	<--- to prove it
+
+DELETE	/users/<batman_id>/friends/<hulk_id>
+
+POST	/thoughts/<to_the_batcave_id>/reactions
+{
+"reactionBody": "me no like caves",
+"username": "hulk"
+}
+
+GET	/thoughts	<-- to prove it
+
+DELETE	/thoughts/<to_the_batcave_id>/reactions/<me_no_like_caves_id>
+
+GET	/thoughts	<-- to prove it
+
+DELETE /users/<batman_id>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
